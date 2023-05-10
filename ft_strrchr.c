@@ -6,7 +6,7 @@
 /*   By: asaravan <asaravan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 15:04:20 by asaravan          #+#    #+#             */
-/*   Updated: 2023/05/04 15:15:03 by asaravan         ###   ########.fr       */
+/*   Updated: 2023/05/11 03:03:01 by asaravan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 char	*ft_strrchr(char *str, int c)
 {
-	int	len;
-	int	ctr;
+	unsigned char	temp;
+	int				len;
+	int				ctr;
 
+	temp = c;
 	ctr = 0;
 	len = ft_strlen(str);
 	while (len >= 0)
 	{
-		if (str[len] == c)
+		if (str[len] == temp)
 			return (&str[len]);
 		len--;
 	}

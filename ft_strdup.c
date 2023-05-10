@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asaravan <asaravan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 16:33:11 by asaravan          #+#    #+#             */
-/*   Updated: 2023/05/05 13:53:20 by asaravan         ###   ########.fr       */
+/*   Created: 2023/05/06 15:26:08 by asaravan          #+#    #+#             */
+/*   Updated: 2023/05/11 03:29:54 by asaravan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *ptr, int c, size_t size)
+char	*ft_strdup(const char *s1)
 {
-	unsigned char	*temp;
+	int		ctr;
+	size_t	len;
+	char	*ptr;
 
-	temp = (unsigned char *)ptr;
-	while (size--)
+	ctr = 0;
+	len = ft_strlen(s1);
+	ptr = malloc((len + 1) * sizeof(char));
+	if (!ptr)
+		return (0);
+	while (s1[ctr] != '\0')
 	{
-		if (*temp == (unsigned char) c)
-			return (temp);
-		temp++;
+		ptr[ctr] = s1[ctr];
+		ctr++;
 	}
-	return (NULL);
+	ptr[ctr] = '\0';
+	return (ptr);
 }
 
 /*
-similar like memchr except it is a block of memory instead of a string
+len + 1 to allocate space for null terminator
 */

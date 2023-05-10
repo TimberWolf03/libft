@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asaravan <asaravan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 16:33:11 by asaravan          #+#    #+#             */
-/*   Updated: 2023/05/05 13:53:20 by asaravan         ###   ########.fr       */
+/*   Created: 2023/05/11 00:35:56 by asaravan          #+#    #+#             */
+/*   Updated: 2023/05/11 01:23:09 by asaravan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *ptr, int c, size_t size)
+void	ft_putstr_fd(char *s, int fd)
 {
-	unsigned char	*temp;
-
-	temp = (unsigned char *)ptr;
-	while (size--)
-	{
-		if (*temp == (unsigned char) c)
-			return (temp);
-		temp++;
-	}
-	return (NULL);
+	if (!s)
+		return ;
+	while (*s)
+		write(fd, s++, 1);
 }
 
 /*
-similar like memchr except it is a block of memory instead of a string
+int main()
+{
+    ft_putstr_fd("wassup", 1);
+}
 */

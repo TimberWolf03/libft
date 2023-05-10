@@ -1,31 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asaravan <asaravan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 16:33:11 by asaravan          #+#    #+#             */
-/*   Updated: 2023/05/05 13:53:20 by asaravan         ###   ########.fr       */
+/*   Created: 2023/05/05 13:40:51 by asaravan          #+#    #+#             */
+/*   Updated: 2023/05/05 14:29:58 by asaravan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *ptr, int c, size_t size)
+int	ft_memcmp(const void *s1, const void *s2, size_t size)
 {
-	unsigned char	*temp;
+	unsigned char	*temp1;
+	unsigned char	*temp2;
+	size_t			ctr;
 
-	temp = (unsigned char *)ptr;
+	if ((!s1 && !s2) || size == 0)
+		return (0);
+	ctr = 0;
+	temp1 = (unsigned char *)s1;
+	temp2 = (unsigned char *)s2;
 	while (size--)
 	{
-		if (*temp == (unsigned char) c)
-			return (temp);
-		temp++;
+		if (temp1[ctr] != temp2[ctr])
+			return (temp1[ctr] - temp2[ctr]);
+		ctr++;
 	}
-	return (NULL);
+	return (0);
 }
 
 /*
-similar like memchr except it is a block of memory instead of a string
+#include <stdio.h>
+int main()
+{
+	printf("%d",ft_memcmp("abcdefghij", "abcdefgiyz", 7));
+}
 */
